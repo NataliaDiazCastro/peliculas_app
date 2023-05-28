@@ -13,6 +13,16 @@ class CardSwipper extends StatelessWidget {
     //
     final size = MediaQuery.of(context).size;
 
+    if (movies.length == 0) {
+      return Container(
+        width: double.infinity,
+        height: size.height * 0.5,
+        child: Center(
+          child: CircularProgressIndicator(),
+        ),
+      );
+    }
+
     return Container(
         width: double.infinity,
         height: size.height * 0.5,
