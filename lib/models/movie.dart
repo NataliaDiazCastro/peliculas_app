@@ -37,7 +37,14 @@ class Movie {
     if (posterPath != null) {
       return 'https://image.tmdb.org/t/p/w500$posterPath';
     }
-    return 'https://i.stack.imgur.com/GNhx0.png';
+    return 'https://programacion.net/files/article/20161110041116_image-not-found.png';
+  }
+
+  get fullBackdropPath {
+    if (backdropPath != null) {
+      return 'https://image.tmdb.org/t/p/w500$backdropPath';
+    }
+    return 'https://programacion.net/files/article/20161110041116_image-not-found.png';
   }
 
   factory Movie.fromJson(String str) => Movie.fromMap(json.decode(str));
