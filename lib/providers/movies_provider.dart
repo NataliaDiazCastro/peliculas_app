@@ -33,7 +33,7 @@ class MoviesProvider extends ChangeNotifier {
   }
 
   Future<String> _getJsonData(String segment, [int page = 1]) async {
-    var url =
+    final url =
         Uri.https(_baseUrl, segment, {'language': _language, 'page': '$page'});
 
     final response = await http.get(url, headers: {
@@ -96,5 +96,18 @@ class MoviesProvider extends ChangeNotifier {
 
     moviesCast[movieId] = credistResponse.cast;
     return credistResponse.cast;
+  }
+
+  Future<List<Movie>> searchMovies(String query) async {
+    final url = Uri.https(
+        _baseUrl, '3/search/movie', {'language': _language, 'query': query});
+
+    final response = await http.get(url, headers: {
+      HttpHeaders.authorizationHeader: 'Bearer $_token',
+    });
+
+    final searchResponse = SearchResponse.fromJson(response.body);
+
+    return searchResponse.results;
   }
 }
