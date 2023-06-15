@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:peliculas_app/models/models.dart';
 import 'package:peliculas_app/widgets/widgets.dart';
 
@@ -96,15 +97,26 @@ class _PosterAndTitle extends StatelessWidget {
                 ),
                 Row(
                   children: [
-                    const Icon(
-                      Icons.star_outline,
-                      size: 25,
-                      color: Colors.grey,
+                    RatingBarIndicator(
+                      rating: movie.voteAverage * 0.5,
+                      itemCount: 5,
+                      direction: Axis.horizontal,
+                      itemSize: 25,
+                      itemPadding: const EdgeInsets.symmetric(horizontal: 2.0),
+                      itemBuilder: (context, _) => const Icon(
+                        Icons.star,
+                        color: Colors.amber,
+                      ),
                     ),
+                    // const Icon(
+                    //   Icons.star_outline,
+                    //   size: 25,
+                    //   color: Colors.grey,
+                    // ),
                     const SizedBox(
                       width: 5,
                     ),
-                    Text('${movie.voteAverage}', style: textTheme.bodySmall),
+                    Text('${movie.voteAverage}', style: textTheme.bodyMedium),
                   ],
                 )
               ],

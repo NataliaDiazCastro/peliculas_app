@@ -38,8 +38,8 @@ class MyApp extends StatelessWidget {
         'home': (_) => HomeScreen(),
         'details': (_) => DetailsScreen(),
       },
-      theme: ThemeData.light()
-          .copyWith(appBarTheme: AppBarTheme(color: Colors.indigoAccent)),
+      theme: ThemeData.dark()
+          .copyWith(appBarTheme: AppBarTheme(color: Color(0xFF7f00b2))),
     );
   }
 }
